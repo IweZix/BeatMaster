@@ -1,3 +1,4 @@
+const { EmbedBuilder } = require("discord.js");
 const FastLogging = require("fastlogging");
 
 const logger = new FastLogging(true, true);
@@ -7,7 +8,18 @@ module.exports = {
     name: "playerStart",
 
     async run(client, queue, track) {
+        
+        const embed = new EmbedBuilder()
+            .setTitle("Now playing")
+            .setDescription(`
+                I'm now playing \`\`${track.title} - ${track.author}\`\`
+                Requested by \`\`${track.requestedBy.username}\`\`
+            `)
+            .setColor("#AA00FF")
+            .setThumbnail(track.thumbnail)
+            .setURL(track.url)
+            .setTimestamp();
 
-        await queue.metadata.channel.send(`The music \`${track.title}\` during \`${track.duration}\` requested by \`${track.requestedBy.username}\` is playing`)
+        await queue.metadata.channel.send({ embeds: [embed] })
     }
 };
