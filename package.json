@@ -7,6 +7,7 @@
     "dotenv": "^16.3.1",
     "fastlogging": "^1.0.1",
     "fs": "^0.0.1-security",
+    "typescript": "^5.3.3",
     "ytdl-core": "^4.11.5"
   },
   "name": "beatmaster",
