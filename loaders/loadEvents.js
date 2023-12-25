@@ -3,7 +3,7 @@ const { readdirSync } = require("fs");
 
 const logger = new FastLogging(true, true);
 
-module.exports = async (client) => {
+module.exports = (client) => {
 
     let count = 0;
     const dirsEvents = readdirSync("./events/");

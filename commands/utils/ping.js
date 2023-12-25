@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 
 module.exports = {
 
@@ -16,8 +16,18 @@ module.exports = {
             .setColor("#AA00FF")
             .setFooter({text: `© 2024 | ${interaction.client.user.username}`})
             .setTimestamp();
+
+        const rowButton = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId("ping")
+                    .setEmoji("🔄")
+                    .setLabel("Refresh")
+                    .setStyle(ButtonStyle.Secondary)
+                    
+            );
         
-        await interaction.reply({ embeds: [embed], ephemeral: true });
+        await interaction.reply({ embeds: [embed], components: [rowButton] });
     }
 
 };
