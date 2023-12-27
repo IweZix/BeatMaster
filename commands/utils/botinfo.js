@@ -26,8 +26,8 @@ module.exports = {
                 > **Uptime : ** ${uptime(client.uptime)}
 
                 __**Bot Info**__
-                > **Created at : ** ${client.user.createdAt}`
-            )
+                > **Created at : ** ${client.user.createdAt}
+            `)
             .setColor("#AA00FF")
             .setThumbnail(client.user.displayAvatarURL())
             .setFooter({text: `© 2024 | ${client.user.username}`})
