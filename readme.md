@@ -45,7 +45,7 @@ VERSION="1.0"
 
 > You can now start the bot :
 ```javascript
-node main.js
+npm start
 ```
 
 # 📝 License
