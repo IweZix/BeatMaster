@@ -40,6 +40,8 @@ module.exports = {
                     return await interaction.editReply(`There is no more music in the queue.`);
                 }
 
+                queue.delete();
+
                 return await interaction.editReply(`I stopped the music !`);
 
             } catch (error) {
