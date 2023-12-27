@@ -19,7 +19,7 @@ BeatMaster is a Discord bot that allows you to play music in a voice channel. It
 
 <!-- Installation -->
 # 🛠️ Installation
-> To install the bot, you must first clone the repository OR download the last [release](https://github.com/IweZix/BeatMaster/release) :
+> To install the bot, you must first clone the repository OR download the last [release](https://github.com/IweZix/BeatMaster/releases) :
 ```bash
 git clone https://github.com/IweZix/BeatMaster.git
 ```
