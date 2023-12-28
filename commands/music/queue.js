@@ -23,7 +23,7 @@ module.exports = {
                         .setDescription(`I'm not playing any music`)
                         .setColor("#AA00FF")
                         .setTimestamp();
-                    return await interaction.editReply({ embeds: [embedError] });
+                    return await interaction.followUp({ embeds: [embedError] });
                 }
 
                 const size = queue.tracks.size;
@@ -34,7 +34,7 @@ module.exports = {
                         .setDescription(`The queue is empty`)
                         .setColor("#AA00FF")
                         .setTimestamp();
-                    return await interaction.editReply({ embeds: [embedError] });
+                    return await interaction.followUp({ embeds: [embedError] });
                 }
 
                 let songs = "";
@@ -50,11 +50,11 @@ module.exports = {
                     .setColor("#AA00FF")
                     .setTimestamp();
 
-                return await interaction.editReply({ embeds: [embed] });
+                return await interaction.followUp({ embeds: [embed] });
 
             } catch (error) {
                 console.log(error);
-                return await interaction.editReply(`There is no more music in the queue.`);
+                return await interaction.followUp(`There is no more music in the queue.`);
             }
 
         }

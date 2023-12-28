@@ -31,19 +31,19 @@ module.exports = {
                         .setDescription(`I'm not playing any music`)
                         .setColor("#AA00FF")
                         .setTimestamp();
-                    return await interaction.editReply({ embeds: [embedError] });
+                    return await interaction.followUp({ embeds: [embedError] });
                 }
 
                 const result = queue.node.skip();
 
                 if (!result) {
-                    return await interaction.editReply(`There is no more music in the queue.`);
+                    return await interaction.followUp(`There is no more music in the queue.`);
                 }
 
-                return await interaction.editReply(`I skipped the music !`);
+                return await interaction.followUp(`I skipped the music !`);
 
             } catch (error) {
-                return await interaction.editReply(`There is no more music in the queue.`);
+                return await interaction.followUp(`There is no more music in the queue.`);
             }
 
         }

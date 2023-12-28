@@ -4,8 +4,8 @@ const { SlashCommandBuilder } = require("discord.js");
 module.exports = {
 
     data: new SlashCommandBuilder()
-        .setName("back")
-        .setDescription("Replay the last song")
+        .setName("resume")
+        .setDescription("Resume the music")
         .setDMPermission(false)
         .setDefaultMemberPermissions(null),
 
@@ -17,22 +17,23 @@ module.exports = {
             const queue = useQueue(interaction.guild.id);
             if (!queue || !queue.isPlaying())
                 return interaction.followUp("I don't play any music.");
-
-            if (!queue.history.previousTrack)
-                return interaction.followUp("I don't have any previous music.");
+        
 
             const voiceChannelMember = interaction.member.voice.channel;
             const voiceChannelBot = (await interaction.guild.members.fetch(interaction.client.user.id)).voice.channel;
-
             if (!voiceChannelMember) 
                 return interaction.followUp("You're not in a voice channel.");
-
             if (voiceChannelBot && voiceChannelBot.id !== voiceChannelMember.id) 
                 return interaction.followUp("You're not in the same voice channel as the bot.");
 
+            
             try {
-                await queue.history.back();
-                await interaction.followUp("The previous music is now playing.");
+                if (queue.node.isPaused()) {
+                    queue.node.resume();
+                    await interaction.followUp("The music is now playing.");
+                } else {
+                    await interaction.followUp("The music is already playing.");
+                }
             } catch (error) {
                 console.error(error);
                 await interaction.followUp("An error occurred with the command.");
