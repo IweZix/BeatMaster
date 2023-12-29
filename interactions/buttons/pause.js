@@ -1,6 +1,6 @@
 const { ComponentType, EmbedBuilder } = require("discord.js");
 const { useQueue } = require("discord-player");
-const { resumeButton } = require("../../assets/bot/music/buttons/resume");
+const { buttons } = require("../../assets/bot/music/buttons/playerResume");
 
 module.exports = {
 
@@ -39,7 +39,7 @@ module.exports = {
                         .setThumbnail(track.thumbnail)
                         .setURL(track.url)
                         .setTimestamp();
-                    await interaction.message.edit({ embeds: [embed], components: [resumeButton]  });
+                    await interaction.message.edit({ embeds: [embed], components: [buttons]  });
                 }
             } catch (error) {
                 console.error(error);

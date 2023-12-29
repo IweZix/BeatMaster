@@ -4,7 +4,7 @@ const { buttons } = require("../../assets/bot/music/buttons/playerPause");
 
 module.exports = {
 
-    name: "resume",
+    name: "skip",
     type: ComponentType.Button,
 
     async run(interaction) {
@@ -23,25 +23,7 @@ module.exports = {
                 return interaction.followUp("You're not in the same voice channel as the bot.");
 
             try {
-                if (queue.node.isPaused()) {
-                    queue.node.resume();
-
-                    track = queue.history.currentTrack;
-
-                    const embed = new EmbedBuilder()
-                        .setTitle("Music Playing")
-                        .setDescription(`
-                            I'm now playing \`\`${track.title} - ${track.author}\`\`
-                            Requested by \`\`${track.requestedBy.username}\`\`
-                        `)
-                        .setColor("#AA00FF")
-                        .setThumbnail(track.thumbnail)
-                        .setURL(track.url)
-                        .setTimestamp();
-                    await interaction.message.edit({ embeds: [embed], components: [buttons] });
-                } else {
-                    await interaction.followUp("The music is already playing.");
-                }
+                queue.node.skip();
             } catch (error) {
                 console.error(error);
                 await interaction.followUp("An error occurred with the command.");

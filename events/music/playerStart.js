@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require("discord.js");
-const { pauseButton } = require("../../assets/bot/music/buttons/pause");
+const { buttons } = require("../../assets/bot/music/buttons/playerPause");
 const FastLogging = require("fastlogging");
 
 const logger = new FastLogging(true, true);
@@ -21,6 +21,6 @@ module.exports = {
             .setURL(track.url)
             .setTimestamp();
 
-        await queue.metadata.channel.send({ embeds: [embed], components: [pauseButton]})
+        await queue.metadata.channel.send({ embeds: [embed], components: [buttons]})
     }
 };
